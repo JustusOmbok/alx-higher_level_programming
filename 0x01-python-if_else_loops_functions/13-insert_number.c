@@ -39,7 +39,7 @@ listint_t *insert_node(listint_t **head, int number)
 			(*hold).next = new;
 			return (new);
 		}
-		hold = (*hold).next
+		hold = (*hold).next;
 			i++;
 	}
 
