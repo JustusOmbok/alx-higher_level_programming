@@ -1,28 +1,26 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
 
 /**
- * reverse_list - linked list is reversed
- * @head: head of the list pointer
+ * reverse_array - linked list is reversed
+ * @a: array to reverse
+ * @n: number of elements in an array
  * Return: new head of the reversed linked list pointer
  */
 
-listint_t *reverse_list(listint_t *head)
+void reverse_array(int *a, int n)
 {
-	listint_t *prev = NULL;
-	listint_t *current = head;
-	listint_t *next;
+	int *begin = a;
+	int *end;
+	int hold = 0;
 
-	while (current != NULL)
+	end  = a + n - 1;
+	for (; begin < end; begin++, end--)
 	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
+		hold = *end;
+		*end = *begin;
+		*begin = hold;
 	}
-
-	return (prev);
 }
 
 /**
@@ -33,57 +31,26 @@ listint_t *reverse_list(listint_t *head)
 
 int is_palindrome(listint_t **head)
 {
-	if (*head == NULL || (*head)->next == NULL)
+	int size, *list, *rev;
+	listint_t *copy = *head;
+
+	if (!head || !copy)
+		return (0);
+	if (copy->next)
 		return (1);
 
-	listint_t *slow = *head;
-	listint_t *fast = *head;
-	listint_t *prev_slow = *head;
-	listint_t *mid = NULL;
-	listint_t *second_half = NULL;
-	int is_palindrome = 1;
+	list = malloc(sizeof(int *));
+	if (!list)
+		return (0);
+	rev = malloc(sizeof(int *));
+	if (!rev)
+		return (0);
+	for (size = 0; copy; copy = copy->next, size++)
+		list[size] = copy->n;
 
-	while (fast != NULL && fast->next != NULL)
-	{
-		fast = fast->next->next;
-		prev_slow = slow;
-		slow = slow->next;
-	}
-
-	if (fast != NULL)
-	{
-		mid = slow;
-		slow = slow->next;
-	}
-
-	second_half = reverse_list(slow);
-	prev_slow->next = NULL;
-
-	listint_t *p1 = *head;
-	listint_t *p2 = second_half;
-
-	while (p1 != NULL && p2 != NULL)
-	{
-		if (p1->n != p2->n)
-		{
-			is_palindrome = 0;
-			break;
-		}
-		p1 = p1->next;
-		p2 = p2->next;
-	}
-
-	prev_slow->next = reverse_list(second_half);
-
-	if (mid != NULL)
-	{
-		prev_slow->next = mid;
-		mid->next = reverse_list(mid->next);
-	}
-	else
-	{
-		prev_slow->next = reverse_list(second_half);
-	}
-
-	return (is_palindrome);
+	list = rev;
+	reverse_array(rev, size);
+	if (list == rev)
+		return (1);
+	return (0);
 }
