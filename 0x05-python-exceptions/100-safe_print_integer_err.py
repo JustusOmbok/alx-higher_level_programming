@@ -10,5 +10,5 @@ def safe_print_integer_err(value):
         else:
             raise ValueError
     except ValueError:
-        print("Exception: Unknown format code 'd' for object of type '{}'".format(type(value).__name__), file=sys.stderr)
+        print("Exception: Unknown format code 'd' for object of type '{}'".format(value.__class__.__name__), file=sys.stderr)
         return False
