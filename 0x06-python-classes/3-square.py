@@ -5,7 +5,7 @@ class Square:
 
     def __int__(self, size=0):
         """square instance is initialized"""
-        if not isinstance(size, int):
+        if not type(size) is int:
             raise TypeError("size must be an integer")
         elif size < 0:
             raise ValueError("size must be >= 0")
