@@ -34,7 +34,7 @@ class Square:
         if(
                 not isinstance(value, tuple)
                 or len(value) != 2
-                or not all(isinstance(coord, int) forfor coord in value)
+                or not all(isinstance(coord, int) for coord in value)
                 or any(coord < 0 for coord in value)
             ):
 
