@@ -1,0 +1,19 @@
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+>>> say_my_name("Justus", "Ombok")
+My name is Justus Ombok
+
+>>> say_my_name("Bob")
+My name is Bob
+
+>>> try:
+...	say_my_name(12, "White")
+... except Exception as e:
+...	print(e)
+first_name must be a string
+
+>>> try:
+...	say_my_name("Jeph", 34)
+... except Exception as e:
+...	print(e)
+last_name must be a string

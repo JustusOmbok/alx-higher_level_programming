@@ -5,3 +5,10 @@
 ... except Exception as e:
 ...     print(e)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+# Test case 2: Dividing each element of the matrix by 2
+>>> try:
+...     print(matrix_divided([[10, 20, 30], [40, 50, 60]], 2))
+... except Exception as e:
+...     print(e)
+[[5.0, 10.0, 15.0], [20.0, 25.0, 30.0]]
