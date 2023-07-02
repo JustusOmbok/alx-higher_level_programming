@@ -12,7 +12,7 @@ def add_integer(a, b=98):
         int:    The addition of a nd b
 
     Raises:
-        TypeError: If b or a is not ant integer or flaoat
+        TypeError: If b or a is not ant integer or float
         
     """
 
