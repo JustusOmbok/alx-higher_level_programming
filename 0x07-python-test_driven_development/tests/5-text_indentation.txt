@@ -1,0 +1,12 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+
+>>> text_indentation("Quonam modo?")
+Quonam modo?
+
+
+>>> text_indentation("Utrum igitur tibi litteram videor an totas paginas commovere?")
+Utrum igitur tibi litteram videor an totas paginas commovere?
