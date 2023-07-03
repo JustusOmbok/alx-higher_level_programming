@@ -38,7 +38,7 @@ def solve_n_queens_util(board, col, solutions):
 
     if col == n:
 
-        solution = [[r, c] for r, c in enumerate(board)]
+        solution = [[r, c] for r in range(n) for c in range(n) if board[r][c] == 1]
         solutions.append(solution)
         return
 
@@ -59,7 +59,7 @@ def solve_n_queens(n):
         sys.exit(1)
 
 
-    board = [[0]* n for _ in range(n)]
+    board = [[0] * n for _ in range(n)]
     solutions = []
     solve_n_queens_util(board, 0, solutions)
 
