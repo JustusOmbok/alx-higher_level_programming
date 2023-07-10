@@ -3,7 +3,7 @@
 class that inherits from BaseGeometry class
 """
 
-BaseGeometry = __import__('7-base_geometry')BaseGeometry
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 class Rectangle(BaseGeometry):
     """
     Rectangle class that is inheriting from basegeometry class
