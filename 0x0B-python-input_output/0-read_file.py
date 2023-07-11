@@ -10,8 +10,5 @@ def read_file(filename=""):
     Returns:
         nothing
     """
-    with open(filename, encoding='utf-8') as file:
-        content = file.read()
-        print(content, end='')
-
-read_file()
+    with open(filename, encoding="utf-8") as file:
+        print(file.read(), end="")
