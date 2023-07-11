@@ -6,14 +6,11 @@ import json
 import os.path
 import sys
 
-
-save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
-
-filename = "add_item.json"
-if os.path.isfile(filename):
-    obj = load_from_json_file(filename)
-else:
-    obj = []
-obj.extend(sys.argv[1:])
-save_to_json_file(obj, filename)
+if __name__ == '__main__':
+    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+    load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+    if not os.path.exists("add_item.json"):
+        with open("add_item.json", "a") as f:
+            pass
+        save_json_file([], "add_item.json")
+    save_json_file(load_json_file("add_item.json") + sys.argv[1:], "add_item.json")
