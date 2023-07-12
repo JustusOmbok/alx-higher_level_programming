@@ -12,4 +12,11 @@ class Student:
 
     def to_json(self, attrs=None):
         """dictionary description"""
-        return vars(self)
+        if attrs is None:
+            return self.__dict__
+        else:
+            filtered_attrs = {}
+            for attr in attrs:
+                if attr in self.__dict__:
+                    filtered_attrs[attr] = self.__dict__[attr]
+            return filtered_attrs
