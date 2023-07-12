@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+returns pascal triangle
+"""
 def pascal_triangle(n):
     """
     A list of lists of integers  reprentation is returned
