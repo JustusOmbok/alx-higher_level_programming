@@ -6,7 +6,7 @@ def class_to_json(obj):
     attributes = obj.__dict__
     result = {}
 
-    for key in attributtes:
+    for key in attributes:
         if not callable(attributes[key]):
             result[key] = attributes[key]
 
