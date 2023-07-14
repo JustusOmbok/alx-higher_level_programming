@@ -91,5 +91,25 @@ class Rectangle(Base):
 
     def display(self):
         """displays triangle using '#'"""
+        print('\n' * self.y, end='')
         for _ in range(self.height):
+            print(' ' * self.x, end='')
             print('#' * self.width)
+
+    def __str__(self):
+        """returns string representation of the instance rectangle"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        """
+        updates the attributes of the rectangle
+        Args:
+            id, width, height, x, y
+        """
+        if len(args) > 0:
+            attributes = ['id', 'width', 'height', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, attributes[i], arg)
+        elif len(kwargs) > 0:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
