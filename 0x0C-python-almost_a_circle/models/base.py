@@ -3,6 +3,7 @@
 Base module - base class is defined
 """
 import json
+import turtle
 
 import csv
 
@@ -125,3 +126,44 @@ class Base:
             return instances
         except FileNotFoundError:
             return []
+
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        a window is opened and all the squares and the rectangles are drawn
+        """
+        turtle.setup(width=600, height=400)
+        screen = turtle.Screen()
+        screen.bgcolor("red")
+        turt = turtle.Turtle()
+        turt.speed(2)
+        turt.turtup()
+
+        for rectangle in list_rectangles:
+            turt.goto(rectangle.x, rectangle.y)
+            turt.turtdown()
+            turt.forward(rectangle.width)
+            turt.left(90)
+            turt.forward(rectangle.height)
+            turt.left(90)
+            turt.forward(rectangle.width)
+            turt.left(90)
+            turt.forward(rectangle.height)
+            turt.left(90)
+            turt.turtup()
+
+        for square in list_squares:
+            turt.goto(square.x, square.y)
+            turt.turtdown()
+            turt.forward(square.size)
+            turt.left(90)
+            turt.forward(square.size)
+            turt.left(90)
+            turt.forward(square.size)
+            turt.left(90)
+            turt.forward(square.size)
+            turt.left(90)
+            turt.turtup()
+
+        turtle.done()
