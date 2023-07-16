@@ -4,6 +4,8 @@ Base module - base class is defined
 """
 import json
 
+import csv
+
 class Base:
     """
     class to manage id attribute
@@ -69,3 +71,57 @@ class Base:
             dummy = cls()
         dummy.update(**dictionary)
         return dummy
+
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        returns list of instances from a json file
+        """
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as file:
+                json_string = file.read()
+                json_list = cls.from_json_string(json_string)
+                instances = [cls.create(**dictionary) for dictionary in json_list]
+                return instances
+        except FileNotFoundError:
+            return []
+
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        A list of instances is serialized to a csv file
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline="") as file:
+            writer = csv.writer(file)
+            if cls.__name__ == "Rectangle":
+                fields = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fields = ["id", "size", "x", "y"]
+            else:
+                return
+            writer.writerow(fields)
+            for obj in list_objs:
+                writer.writerow([getattr(obj, field) for field in fields])
+
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        A list of instances are deserislized from a csv file
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            instances = []
+            with open(filename, "r", newline="") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    dictionary = {key: int(value) for key, value in row.items()}
+                    instance = cls.create(**dictionary)
+                    instances.append(instance)
+            return instances
+        except FileNotFoundError:
+            return []
