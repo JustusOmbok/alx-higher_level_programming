@@ -90,11 +90,13 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """displays triangle using '#'"""
-        print('\n' * self.y, end='')
+        """displays rectangle using '#'"""
+        rect_repr = ""
+        for _ in range(self.y):
+            rect_repr += "\n"
         for _ in range(self.height):
-            print(' ' * self.x, end='')
-            print('#' * self.width)
+            rect_repr += " " * self.x + "#" * self.width + "\n"
+        return rect_repr.rstrip()
 
     def __str__(self):
         """returns string representation of the instance rectangle"""
