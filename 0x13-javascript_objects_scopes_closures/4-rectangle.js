@@ -30,4 +30,4 @@ module.exports = class Rectangle {
       this.height *= 2;
     }
   }
-}; //added double function
+};
