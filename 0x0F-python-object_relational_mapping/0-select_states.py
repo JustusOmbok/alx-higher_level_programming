@@ -11,7 +11,6 @@ if __name__ == "__main__":
     Accesses database 
     and gets states from database
     """
-
     if len(argv) < 4:
         exit()
 
@@ -20,7 +19,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states ORDER BY state.id")
+    cur.execute("SELECT * FROM states")
 
     rows = cur.fetchall()
 
