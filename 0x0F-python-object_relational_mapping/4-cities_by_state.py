@@ -20,11 +20,12 @@ Your script should take 3 arguments: mysql username, mysql password and database
 
     cur = db.cursor()
 
-    cur.execute("SELECT cities.id, cities.name, states.name, FROM cities \
+    cur.execute("""SELECT cities.id, cities.name, states.name, FROM cities \
             JOIN states ON cities.state_id = states.id \
-            ORDER BY cities.id ASC")
+            ORDER BY cities.id ASC""")
 
     rows = cur.fetchall()
 
-    for row in rows:
+    if rows is not None:
+        for row in rows:
         print(row)
