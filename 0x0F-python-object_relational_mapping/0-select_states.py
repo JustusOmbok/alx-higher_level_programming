@@ -1,40 +1,27 @@
 #!/usr/bin/python3
 """
- a script that lists all states from the database hbtn_0e_0_usa
+ a script that lists all states 
+ from the database hbtn_0e_0_usa
  """
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
     """
-    Accesses database and gets states from database
+    Accesses database 
+    and gets states from database
     """
-    if len(sys.argv) != 4:
-        print("Usage: ./0-select_states.py <mysql_username> <myaql_password> <database_name>")
-        sys.exit(1)
+    if len(argv) < 4:
+        exit()
 
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    databse_name = sys.argv[3]
-
-    db = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=mysql_username,
-            passwd=mysql_password,
-            db=database_name
-        )
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1], passwd=argv[2], db=argv[3])
 
 
-    cursor = db.cursor()
+    cur = db.cursor()
 
-    cursor.execute("SELECT * FROM states ORDER BY id")
+    cur.execute("SELECT * FROM states")
 
-    rows = cursor.fetchall()
+    rows = cur.fetchall()
 
     for row in rows:
         print(row)
-
-
-    cursor.close()
-    db.close()
