@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states")
+    cur.execute("SELECT * FROM states ORDER BY id")
 
     rows = cur.fetchall()
 
