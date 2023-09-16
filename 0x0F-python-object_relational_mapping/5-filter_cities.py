@@ -17,15 +17,24 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    query = "SELECT cities.id, cities.name FROM cities \
-            JOIN states ON cities.state_id = states.id \
-            WHERE states.name LIKE BINARY %(state_name)s \
-            ORDER BY cities.id ASC"
-
-    cur.execute(query, {'states_name': argv[4]})
+    cur.execute("""
+        SELECT
+            cities.id, cities.name
+        FROM
+            cities 
+        JOIN
+            states
+        ON
+            cities.state_id = states.id 
+        WHERE
+            states.name LIKE BINARY %(state_name)s 
+        ORDER BY 
+            cities.id ASC
+    """, {
+        'state_name': argv[4]
+        })
 
     rows = cur.fetchall()
 
     if rows is not None:
-        for row in rows:
-            print(",".join([row[1]]))
+        print(",".join([row[1] for row in rows]))
