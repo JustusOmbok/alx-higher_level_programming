@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 """
-A script that takes in the name of a state as an argument and lists all cities of that state, 
-Using the database hbtn_0e_4_usa
+A script that takes in the name of a state as an argument and lists all cities of that state using the database hbtn_0e_4_usa
  """
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
     """
-    A script that lists all cities from the database hbtn_0e_4_usa
-    Your script should take 4 arguments: mysql username, mysql password and database name
+    A script that acceses the db and retrieves cities of a state
     """
     if len(argv) < 5:
         exit()
@@ -19,18 +17,10 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    query = """
-    SELECT cities.id, cities.name
-    FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name LIKE BINARY %s
-    ORDER BY cities.id ASC
-    """
-
     cur.execute(query, (state_name))
 
     rows = cur.fetchall()
 
     if rows is not None:
         for row in rows:
-            print([row[1])
+            print(",".join([row[1]]))
