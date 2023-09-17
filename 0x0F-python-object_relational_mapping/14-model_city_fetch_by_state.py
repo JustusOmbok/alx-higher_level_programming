@@ -19,8 +19,8 @@ if __name__ == "__main__":
 
     cities_and_states = session.query(City, State).join(State)
 
-    for city, state in cities_and_states.order_by(City.id).all():
-        print('{}: ({}) {}'.format(state.name, city.id, city.name))
+    for city, state in cities_and_states.all():
+        print('{}: ({:d}) {}'.format(state.name, city.id, city.name))
 
     session.commit()
     session.close()
