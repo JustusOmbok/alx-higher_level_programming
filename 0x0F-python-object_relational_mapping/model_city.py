@@ -4,7 +4,7 @@ This script defines a class City for use with SQLAlchemy.
 """
 
 from sqlalchemy import Column, Integer, String, ForeignKey
-from model_state import Base
+from model_state import Base, State
 
 class City(Base):
     """

@@ -24,3 +24,6 @@ if __name__ == "__main__":
 
     for city, state in cities_and_states.order_by(City.id).all():
         print('{}: ({}) {}'.format(state.name, city.id, city.name))
+
+    session.commit()
+    session.close()
