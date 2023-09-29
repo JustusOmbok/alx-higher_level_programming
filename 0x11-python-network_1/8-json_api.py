@@ -4,17 +4,16 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
-        q = ""
+    if len(sys.argv) < 2:
+        payload = {"q": ""}
     else:
-        q = sys.argv[1]
+        payload = {"q": sys.argv[1]}
 
 
-    payload = {'q': q}
     url = 'http://0.0.0.0:5000/search_user'
+    response = requests.post(url, data=payload)
 
     try:
-        response = requests.post(url, data=payload)
         data = response.json()
 
         if data:
