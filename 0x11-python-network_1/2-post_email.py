@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Sends a post request with email address and the body is returned """
 import urllib.request
 import urllib.parse
 import sys

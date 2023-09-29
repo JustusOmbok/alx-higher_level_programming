@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Uses urllib module to fetch web page """
 import urllib.request
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Uses urllib module to fetch site and display x-request-id """
 import urllib.request
 import sys
 
