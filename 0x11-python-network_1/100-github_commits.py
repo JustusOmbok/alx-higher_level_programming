@@ -19,4 +19,4 @@ if __name__ == "__main__":
             print(f"{sha}: {author_name}")
 
     except ValueError:
-        print("An error occurred")
+        print("An error occurred while fetching data from the GitHub API.")
