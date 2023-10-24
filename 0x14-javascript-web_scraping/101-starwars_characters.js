@@ -16,7 +16,7 @@ request(apiUrl, (error, response, body) => {
 
 
 		function printCharacters(index) {
-			if (index < charactersUrls.length) {
+			if (index < characterUrls.length) {
 				const characterUrl = characterUrls[index];
 				request(characterUrl, (charError, charResponse, charBody) => {
 					if (charError) {
@@ -24,7 +24,7 @@ request(apiUrl, (error, response, body) => {
 					} else {
 						const charData = JSON.parse(charBody);
 						console.log(charData.name);
-						printCharacter(index + 1);
+						printCharacters(index + 1);
 					}
 				});
 			}
