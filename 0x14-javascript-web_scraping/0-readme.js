@@ -1,6 +1,6 @@
 #!/usr/bin/node
 //Reads the file in utf-8
-const fs = require("fs");
+const fs = require('fs');
 const filePath = process.argv[2];
 
 
