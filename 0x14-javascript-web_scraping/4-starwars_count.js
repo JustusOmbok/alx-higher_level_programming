@@ -11,9 +11,9 @@ request(apiUrl, (error, response, body) => {
 			const filmsData = JSON.parse(body);
 			const characterId= 18;
 			const moviesWithWedge = filmsData.results.filter((film) =>
-				film.characters.includes(`https://swapi-api.alx-tools.com/api/peaople/${characterId}/`)
+				film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
 			);
-			console.log(movieData.title);
+			console.log(moviesWithWedge.length);
 		} else {
 			console.error(`Failed to retrieve movie data. Status code: ${response.statusCode}`);
 		}
