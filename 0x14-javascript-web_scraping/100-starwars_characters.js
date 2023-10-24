@@ -21,7 +21,7 @@ request(apiUrl, (error, response, body) => {
 					const charData = JSON.parse(charBody);
 					console.log(charData.name);
 				}
-			}
-		});
+			});
+		}
 	}
 });
